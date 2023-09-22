@@ -73,21 +73,24 @@ class ClassesController extends Controller
         }
     }
 
-    public function update($classId)
+    public function update($Ids)
     {
+
+
+        $Ids = explode('+', $Ids);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Filter and validate your POST data properly
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 
-
             // Update the class using the retrieved POST data
-            $updateClass = $this->classModel->updateClass($classId, $post);
-            $teacherId = $this->subjectModel->detailTeacher($classId);
+
+            $updateClass = $this->classModel->updateClass($Ids[0], $post);
+
 
             if ($updateClass["success"]) {
                 // Redirect to the class details page after a delay
-                header("Refresh: $this->delay; url=" . URLROOT . 'classesController/index/' . $teacherId->teacherId);
+                header("Refresh: $this->delay; url=" . URLROOT . 'classesController/index/' . $Ids[1]);
                 exit; // Stop execution to ensure the redirect takes place
             } else {
                 // Handle the case where the update failed
@@ -95,11 +98,13 @@ class ClassesController extends Controller
             }
         } else {
             // Retrieve the selected class data
-            $selectedClass = $this->classModel->detailsClass($classId);
+            $selectedClass = $this->classModel->detailsClass($Ids[0]);
 
             if ($selectedClass) {
                 $data = [
-                    'class' => $selectedClass
+                    'class' => $selectedClass,
+                    'classId' => $Ids[0],
+                    'teacherId' => $Ids[1]
                 ];
 
                 // Load the update view with the selected class data

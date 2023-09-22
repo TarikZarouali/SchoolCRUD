@@ -10,12 +10,13 @@
         <div class="form-group">
             <label class="col-sm-3 col-form-label" for="studentFirstName">student firstname*</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" name="studentFirstName" id="studentFirstName" required="true" maxlength="150">
+                <input type="text" class="form-control" name="studentFirstName" id="studentFirstName" required="true"
+                    maxlength="150">
             </div>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-3 col-form-label" for="studentLastName">Education Lastname*</label>
+            <label class="col-sm-3 col-form-label" for="studentLastName">student Lastname*</label>
             <div class="col-sm-9">
                 <input type="text" class="form-control" name="studentLastName" id="studentLastName" required="true">
             </div>
@@ -24,7 +25,8 @@
         <div class="form-group">
             <label class="col-sm-3 col-form-label" for="studentAdres">student address*</label>
             <div class="col-sm-9">
-                <textarea class="form-control" name="studentAdres" id="studentAdres" required="true" rows="5" style="resize: vertical;"></textarea>
+                <textarea class="form-control" name="studentAdres" id="studentAdres" required="true" rows="5"
+                    style="resize: vertical;"></textarea>
             </div>
         </div>
 

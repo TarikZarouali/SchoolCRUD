@@ -35,19 +35,23 @@
         </thead>
         <tbody>
             <?php foreach ($data['Student'] as $student) { ?>
-                <tr>
-                    <td><a href="<?= URLROOT; ?>gradesController/index/<?= $student->studentId ?>" style="text-decoration:none; color:black;"><?= $student->studentId ?></td>
-                    <td><?= $student->studentClassId ?></td>
-                    <td><?= $student->studentFirstName ?></td>
-                    <td><?= $student->studentLastName ?></td>
-                    <td><?= $student->studentAdres ?></td>
-                    <td style="text-align: center;">
-                        <div style="display: flex; justify-content: center;">
-                            <a class="btn btn-danger" href="<?= URLROOT; ?>/studentsController/delete/<?= $student->studentId ?>" onclick="return confirm('Are you sure you want to delete this student?')">Delete</a>
-                            <a class="btn btn-info" href="<?= URLROOT; ?>/studentsController/update/<?= $student->studentId ?>">Update</a>
-                        </div>
-                    </td>
-                </tr>
+            <tr>
+                <td><a href="<?= URLROOT; ?>gradesController/index/<?= $student->studentId ?>"
+                        style="text-decoration:none; color:black;"><?= $student->studentId ?></td>
+                <td><?= $student->studentClassId ?></td>
+                <td><?= $student->studentFirstName ?></td>
+                <td><?= $student->studentLastName ?></td>
+                <td><?= $student->studentAdres ?></td>
+                <td style="text-align: center;">
+                    <div style="display: flex; justify-content: center;">
+                        <a class="btn btn-danger"
+                            href="<?= URLROOT; ?>/studentsController/delete/<?= $student->studentId . '+' . $data['Class']->classId ?>"
+                            onclick="return confirm('Are you sure you want to delete this student?')">Delete</a>
+                        <a class="btn btn-info"
+                            href="<?= URLROOT; ?>/studentsController/update/<?=  $student->studentId . '+' . $data['Class']->classId  ?>">Update</a>
+                    </div>
+                </td>
+            </tr>
             <?php } ?>
         </tbody>
     </table>

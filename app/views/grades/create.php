@@ -2,7 +2,7 @@
 
 <div class="container">
     <h2>Create a New Grade</h2>
-    <form id="createGrade" method="POST" action="<?= URLROOT ?>/gradesController/create">
+    <form id="createGrade" method="POST" action="<?= URLROOT ?>/gradesController/create/">
 
         <!-- Add a hidden input field to store the selected school ID -->
         <input type="hidden" name="studentId" value="<?= $data['studentId'] ?>">

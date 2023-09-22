@@ -46,7 +46,7 @@ class GradesController extends Controller
 
             if ($createGrade["success"] === true) {
                 echo $createGrade["message"];
-                header("Refresh: $this->delay; url=" . URLROOT . 'GradesController/create');
+                header("Refresh: $this->delay; url=" . URLROOT . 'GradesController/index/' . $selectedStudentId);
             } else {
                 echo $createGrade["message"];
                 header("Refresh: $this->delay; url=" . URLROOT . 'GradesController/index/' . $selectedStudentId);
@@ -61,27 +61,29 @@ class GradesController extends Controller
         }
     }
 
-    public function delete($gradeId)
+    public function delete($Ids)
     {
-        if ($this->gradeModel->deleteGrade($gradeId)) {
-            header("Refresh:$this->delay; url=" . URLROOT . 'gradesController/index/' . $gradeId);
+        $Ids = explode('+', $Ids);
+        if ($this->gradeModel->deleteGrade($Ids[0])) {
+            header("Refresh:$this->delay; url=" . URLROOT . 'gradesController/index/' . $Ids[1]);
         } else {
             echo "Er is iets fout gegaan"; // Corrected capitalization
         }
     }
 
-    public function update($gradeId)
+    public function update($Ids)
     {
+        $Ids = explode('+', $Ids);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Filter and validate your POST data properly
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             // Update the student using the retrieved POST data
-            $updateGrade = $this->gradeModel->updateGrade($gradeId, $post);
+            $updateGrade = $this->gradeModel->updateGrade($Ids[0], $post);
 
             if ($updateGrade["success"]) {
                 // Redirect to the student details page after a delay
-                header("Location: " . URLROOT . '/gradesController/index/' . $gradeId);
+                header("Location: " . URLROOT . '/gradesController/index/' . $Ids[1]);
                 exit; // Stop execution to ensure the redirect takes place
             } else {
                 // Handle the case where the update failed
@@ -89,11 +91,13 @@ class GradesController extends Controller
             }
         } else {
             // Retrieve the selected student data
-            $selectedGrade = $this->gradeModel->detailsGrade($gradeId);
+            $selectedGrade = $this->gradeModel->detailsGrade($Ids[0]);
 
             if ($selectedGrade) {
                 $data = [
-                    'grade' => $selectedGrade
+                    'grade' => $selectedGrade,
+                    'gradeId' => $Ids[0],
+                    'studentId' => $Ids[1]
                 ];
 
                 // Load the update view with the selected student data
@@ -118,7 +122,7 @@ class GradesController extends Controller
 
             if ($createAttendancy["success"] === true) {
                 echo $createAttendancy["message"];
-                header("Refresh: $this->delay; url=" . URLROOT . 'GradesController/createAttendancy');
+                header("Refresh: $this->delay; url=" . URLROOT . 'GradesController/index/' . $selectedStudentId);
             } else {
                 echo $createAttendancy["message"];
                 header("Refresh: $this->delay; url=" . URLROOT . 'GradesController/index/' . $selectedStudentId);
@@ -133,27 +137,30 @@ class GradesController extends Controller
         }
     }
 
-    public function deleteAttendancy($attendancyId)
+    public function deleteAttendancy($Ids)
     {
-        if ($this->gradeModel->deleteAttendancy($attendancyId)) {
-            header("Refresh:$this->delay; url=" . URLROOT . 'gradesController/index/' . $attendancyId);
+        $Ids = explode('+', $Ids);
+        if ($this->gradeModel->deleteAttendancy($Ids[0])) {
+            header("Refresh:$this->delay; url=" . URLROOT . 'gradesController/index/' . $Ids[1]);
         } else {
             echo "Er is iets fout gegaan"; // Corrected capitalization
         }
     }
 
-    public function updateAttendancy($attendancyId)
+    public function updateAttendancy($Ids)
     {
+
+        $Ids = explode('+', $Ids);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Filter and validate your POST data properly
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             // Update the student using the retrieved POST data
-            $updateAttendancy = $this->gradeModel->updateAttendancy($attendancyId, $post);
+            $updateAttendancy = $this->gradeModel->updateAttendancy($Ids[0], $post);
 
             if ($updateAttendancy["success"]) {
                 // Redirect to the student details page after a delay
-                header("Location: " . URLROOT . '/gradesController/index/' . $attendancyId);
+                header("Location: " . URLROOT . '/gradesController/index/' . $Ids[1]);
                 exit; // Stop execution to ensure the redirect takes place
             } else {
                 // Handle the case where the update failed
@@ -161,11 +168,13 @@ class GradesController extends Controller
             }
         } else {
             // Retrieve the selected student data
-            $selectedAttendancy = $this->gradeModel->detailsAttendancy($attendancyId);
+            $selectedAttendancy = $this->gradeModel->detailsAttendancy($Ids[0]);
 
             if ($selectedAttendancy) {
                 $data = [
-                    'attendancy' => $selectedAttendancy
+                    'attendancy' => $selectedAttendancy,
+                    'attendancyId' => $Ids[0],
+                    'studentId' => $Ids[1]
                 ];
 
                 // Load the update view with the selected student data

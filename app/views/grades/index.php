@@ -56,10 +56,10 @@
                     <td style="text-align: center;">
                         <div style="display: flex; justify-content: center;">
                             <a class="btn btn-danger"
-                                href="<?= URLROOT; ?>/gradesController/delete/<?= $grade->gradeId ?>"
+                                href="<?= URLROOT; ?>/gradesController/delete/<?= $grade->gradeId . '+' . $data['Student']->studentId ?>"
                                 onclick="return confirm('Are you sure you want to delete this grade?')">Delete</a>
                             <a class="btn btn-info"
-                                href="<?= URLROOT; ?>/gradesController/update/<?= $grade->gradeId ?>">Update</a>
+                                href="<?= URLROOT; ?>/gradesController/update/<?= $grade->gradeId . '+' . $data['Student']->studentId ?>">Update</a>
                         </div>
                     </td>
                 </tr>
@@ -92,10 +92,10 @@
                     <td style="text-align: center;">
                         <div style="display: flex; justify-content: center;">
                             <a class="btn btn-danger"
-                                href="<?= URLROOT; ?>/gradesController/deleteAttendancy/<?= $attendancy->attendancyId ?>"
+                                href="<?= URLROOT; ?>/gradesController/deleteAttendancy/<?= $attendancy->attendancyId . '+' . $data['Student']->studentId ?>"
                                 onclick="return confirm('Are you sure you want to delete this attendance?')">Delete</a>
                             <a class="btn btn-info"
-                                href="<?= URLROOT; ?>/gradesController/updateAttendancy/<?= $attendancy->attendancyId ?>">Update</a>
+                                href="<?= URLROOT; ?>/gradesController/updateAttendancy/<?= $attendancy->attendancyId . '+' . $data['Student']->studentId ?>">Update</a>
                         </div>
                     </td>
                 </tr>

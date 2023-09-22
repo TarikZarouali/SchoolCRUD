@@ -2,7 +2,7 @@
 
 <div class="container">
     <h2>Update student</h2>
-    <form action="<?= URLROOT; ?>/studentsController/update/<?= $data['student']->studentId ?>" method="POST">
+    <form action="<?= URLROOT; ?>/studentsController/update/<?= $data['studentId'] . '+' . $data['classId'] ?>" method="POST">
         <div class="form-group">
             <input type="hidden" class="form-control" id="studentId" name="studentId" value="<?= $data['Student']->studentId ?>">
         </div>

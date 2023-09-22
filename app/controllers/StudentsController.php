@@ -63,27 +63,29 @@ class StudentsController extends Controller
         }
     }
 
-    public function delete($studentId)
+    public function delete($Ids)
     {
-        if ($this->studentModel->deleteStudent($studentId)) {
-            header("Refresh:$this->delay; url=" . URLROOT . 'classesController/index/' . $studentId);
+        $Ids = explode('+', $Ids);
+        if ($this->studentModel->deleteStudent($Ids[0])) {
+            header("Refresh:$this->delay; url=" . URLROOT . 'studentsController/index/' . $Ids[1]);
         } else {
             echo "Er is iets fout gegaan"; // Corrected capitalization
         }
     }
 
-    public function update($studentId)
+    public function update($Ids)
     {
+        $Ids = explode('+', $Ids);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Filter and validate your POST data properly
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             // Update the student using the retrieved POST data
-            $updateStudent = $this->studentModel->updateStudent($studentId, $post);
+            $updateStudent = $this->studentModel->updateStudent($Ids[0], $post);
 
             if ($updateStudent["success"]) {
                 // Redirect to the student details page after a delay
-                header("Refresh: $this->delay; url=" . URLROOT . 'studentsController/detailsStudent/' . $studentId);
+                header("Refresh: $this->delay; url=" . URLROOT . 'studentsController/detailsStudent/' . $Ids[1]);
                 exit; // Stop execution to ensure the redirect takes place
             } else {
                 // Handle the case where the update failed
@@ -91,11 +93,13 @@ class StudentsController extends Controller
             }
         } else {
             // Retrieve the selected student data
-            $selectedStudent = $this->studentModel->detailsStudent($studentId);
+            $selectedStudent = $this->studentModel->detailsStudent($Ids[0]);
 
             if ($selectedStudent) {
                 $data = [
-                    'student' => $selectedStudent
+                    'student' => $selectedStudent,
+                    'studentId' => $Ids[0],
+                    'classId' => $Ids[1]
                 ];
 
                 // Load the update view with the selected student data
