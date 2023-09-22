@@ -1,5 +1,0 @@
-SELECT schools.schoolDescription, schools.schoolId, educations.educationId
-                        FROM schoolhaseducations
-                        INNER JOIN schools ON schoolhaseducations.schoolId = schools.schoolId
-                        INNER JOIN educations ON schoolhaseducations.educationId = educations.educationId
-                        WHERE schools.schoolId = ':schoolId'
