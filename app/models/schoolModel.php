@@ -138,4 +138,24 @@ class schoolModel
       return false;
     }
   }
+
+  public function getSchoolsByPagination($offset, $limit): array
+  {
+    try {
+      $getSchoolsquery = "SELECT schoolId, schoolName, schoolAdres 
+                        FROM `schools`
+                        WHERE schoolIsActive = 1 LIMIT :offset,:limit";
+
+      $this->db->query($getSchoolsquery);
+      $this->db->bind(':offset', $offset);
+      $this->db->bind(':limit', $limit);
+
+      $result = $this->db->resultSet();
+
+      return $result ?? [];
+    } catch (PDOexception $ex) {
+      error_log("Error : failed to get all schools from database in class schoolsmodel.");
+      die('Error : failed to get all schools');
+    }
+  }
 }

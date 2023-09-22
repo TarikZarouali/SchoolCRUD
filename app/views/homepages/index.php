@@ -16,7 +16,7 @@
     <h1>welkom medewerker</h1>
 
 
-    <a href="<?= URLROOT; ?>schoolscontroller/index">School</a>
+    <a href="<?= URLROOT; ?>schoolscontroller/index/1">School</a>
 
 
 
@@ -24,10 +24,10 @@
     <a href="wwww.jsaidnas"></a>
 
     <style>
-    .bx {
-        font-size: 2rem;
-        cursor: pointer;
-    }
+        .bx {
+            font-size: 2rem;
+            cursor: pointer;
+        }
     </style>
 
 
