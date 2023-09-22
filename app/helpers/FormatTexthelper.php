@@ -31,4 +31,3 @@
             return print($cssInfoMessage);
         }
     }
-?>

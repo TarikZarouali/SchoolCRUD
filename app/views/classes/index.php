@@ -17,6 +17,7 @@
 <div class="float-right" style="margin-bottom: 2rem;">
     <a class="btn btn-success" href="<?= URLROOT; ?>/classesController/create/<?= $data['Teacher']->teacherId ?>">Create
         new education</a>
+
 </div>
 
 
@@ -29,16 +30,20 @@
     </thead>
     <tbody>
         <?php foreach ($data["Class"] as $class) { ?>
-            <tr>
+        <tr>
 
-                <td><a href="<?= URLROOT; ?>studentsController/index/<?= $class->classId ?>" style="text-decoration:none; color:black;"><?= $class->classId ?></a></td>
-                <td><?= $class->classTeacherId ?></td>
-                <td><?= $class->className ?></td>
-                <td style="align-items: center;">
-                    <a class=" btn btn-danger" href="<?= URLROOT; ?>/classesController/delete/<?= $class->classId . '+' . $data['Teacher']->teacherId  ?>" onclick="return confirm('Are you sure you want to delete this school?')">Delete</a>
-                    <a class="btn btn-info" href="<?= URLROOT; ?>/classesController/update/<?= $class->classId . '+' . $data['Teacher']->teacherId ?>">Update</a>
-                </td>
-            </tr>
+            <td><a href="<?= URLROOT; ?>studentsController/index/<?= $class->classId ?>"
+                    style="text-decoration:none; color:black;"><?= $class->classId ?></a></td>
+            <td><?= $class->classTeacherId ?></td>
+            <td><?= $class->className ?></td>
+            <td style="align-items: center;">
+                <a class=" btn btn-danger"
+                    href="<?= URLROOT; ?>/classesController/delete/<?= $class->classId . '+' . $data['Teacher']->teacherId  ?>"
+                    onclick="return confirm('Are you sure you want to delete this school?')">Delete</a>
+                <a class="btn btn-info"
+                    href="<?= URLROOT; ?>/classesController/update/<?= $class->classId . '+' . $data['Teacher']->teacherId ?>">Update</a>
+            </td>
+        </tr>
         <?php } ?>
     </tbody>
 </table>

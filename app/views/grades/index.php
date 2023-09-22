@@ -23,18 +23,15 @@
 
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
-            role="tab" aria-controls="nav-home" aria-selected="true">Grades</button>
-        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
-            role="tab" aria-controls="nav-profile" aria-selected="false">Attendances</button>
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Grades</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Attendances</button>
     </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <!-- Content for the Grades tab goes here -->
         <div class="float-right" style="margin-top: 20px;">
-            <a class="btn btn-success"
-                href="<?= URLROOT; ?>/gradesController/create/<?= $data['Student']->studentId ?>">Create new grade</a>
+            <a class="btn btn-success" href="<?= URLROOT; ?>/gradesController/create/<?= $data['Student']->studentId ?>">Create new grade</a>
         </div>
         <table class="table table-hover" style="width: 80%;">
             <thead>
@@ -48,21 +45,18 @@
             </thead>
             <tbody>
                 <?php foreach ($data['Grade'] as $grade) { ?>
-                <tr>
-                    <td><?= $grade->gradeId ?></td>
-                    <td><?= $grade->gradeStudentId ?></td>
-                    <td><?= $grade->gradeName ?></td>
-                    <td><?= $grade->gradeGrade ?></td>
-                    <td style="text-align: center;">
-                        <div style="display: flex; justify-content: center;">
-                            <a class="btn btn-danger"
-                                href="<?= URLROOT; ?>/gradesController/delete/<?= $grade->gradeId . '+' . $data['Student']->studentId ?>"
-                                onclick="return confirm('Are you sure you want to delete this grade?')">Delete</a>
-                            <a class="btn btn-info"
-                                href="<?= URLROOT; ?>/gradesController/update/<?= $grade->gradeId . '+' . $data['Student']->studentId ?>">Update</a>
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><?= $grade->gradeId ?></td>
+                        <td><?= $grade->gradeStudentId ?></td>
+                        <td><?= $grade->gradeName ?></td>
+                        <td><?= $grade->gradeGrade ?></td>
+                        <td style="text-align: center;">
+                            <div style="display: flex; justify-content: center;">
+                                <a class="btn btn-danger" href="<?= URLROOT; ?>/gradesController/delete/<?= $grade->gradeId . '+' . $data['Student']->studentId ?>" onclick="return confirm('Are you sure you want to delete this grade?')">Delete</a>
+                                <a class="btn btn-info" href="<?= URLROOT; ?>/gradesController/update/<?= $grade->gradeId . '+' . $data['Student']->studentId ?>">Update</a>
+                            </div>
+                        </td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
@@ -70,8 +64,7 @@
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <!-- Content for the Attendances tab goes here -->
         <div class="float-right" style="margin-top: 20px;">
-            <a class="btn btn-success"
-                href="<?= URLROOT; ?>/gradesController/createAttendancy/<?= $data['Student']->studentId ?>">Create
+            <a class="btn btn-success" href="<?= URLROOT; ?>/gradesController/createAttendancy/<?= $data['Student']->studentId ?>">Create
                 new attendance</a>
         </div>
         <table class="table table-hover" style="width: 80%;">
@@ -85,20 +78,17 @@
             </thead>
             <tbody>
                 <?php foreach ($data['Attendancy'] as $attendancy) { ?>
-                <tr>
-                    <td><?= $attendancy->attendancyId ?></td>
-                    <td><?= $attendancy->attendancyStudentId ?></td>
-                    <td><?= $attendancy->attendancyReason ?></td>
-                    <td style="text-align: center;">
-                        <div style="display: flex; justify-content: center;">
-                            <a class="btn btn-danger"
-                                href="<?= URLROOT; ?>/gradesController/deleteAttendancy/<?= $attendancy->attendancyId . '+' . $data['Student']->studentId ?>"
-                                onclick="return confirm('Are you sure you want to delete this attendance?')">Delete</a>
-                            <a class="btn btn-info"
-                                href="<?= URLROOT; ?>/gradesController/updateAttendancy/<?= $attendancy->attendancyId . '+' . $data['Student']->studentId ?>">Update</a>
-                        </div>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><?= $attendancy->attendancyId ?></td>
+                        <td><?= $attendancy->attendancyStudentId ?></td>
+                        <td><?= $attendancy->attendancyReason ?></td>
+                        <td style="text-align: center;">
+                            <div style="display: flex; justify-content: center;">
+                                <a class="btn btn-danger" href="<?= URLROOT; ?>/gradesController/deleteAttendancy/<?= $attendancy->attendancyId . '+' . $data['Student']->studentId ?>" onclick="return confirm('Are you sure you want to delete this attendance?')">Delete</a>
+                                <a class="btn btn-info" href="<?= URLROOT; ?>/gradesController/updateAttendancy/<?= $attendancy->attendancyId . '+' . $data['Student']->studentId ?>">Update</a>
+                            </div>
+                        </td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>

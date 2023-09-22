@@ -15,8 +15,9 @@
         </table>
     </div>
     <div class="float-right" style="margin-top: 20px;">
-        <a class="btn btn-success"
-            href="<?= URLROOT; ?>educationsController/create/<?= $data['School']->schoolId ?>">Create new education</a>
+        <a class="btn btn-success" href="<?= URLROOT; ?>educationsController/create/<?= $data['School']->schoolId ?>">Create new education</a>
+        <a class=" btn btn-danger" href="<?= URLROOT; ?>/schoolsController/delete/<?= $data['School']->schoolId ?>" onclick="return confirm('Are you sure you want to delete this school?')">Delete</a>
+        <a class="btn btn-info" href="<?= URLROOT; ?>/schoolsController/update/<?= $data['School']->schoolId  ?>">Update</a>
     </div>
 </div>
 
@@ -28,28 +29,18 @@
                 <th>Education ID</th>
                 <th>Education Name</th>
                 <th>Education Duration</th>
-                <th>Action</th> <!-- Adding an Action header for potential actions -->
             </tr>
         </thead>
         <tbody>
             <?php foreach ($data['Education'] as $education) { ?>
-            <tr>
-                <td><a href="<?= URLROOT; ?>SubjectsController/index/<?= $education->educationId ?>"
-                        style="text-decoration:none; color:black;"><?= $education->schoolId ?></td>
-                <td><?= $education->educationId ?></td>
-                <td><?= $education->educationName ?></td>
-                <td><?= $education->educationDuration ?></td>
-                <td style="align-items: center;">
-                    <!-- Align buttons to the right -->
-                    <!-- Add your action buttons here -->
-                    <a class="btn btn-danger"
-                        href="<?= URLROOT; ?>/educationsController/delete/<?= $education->educationId . '+' . $data['School']->schoolId ?>"
-                        onclick="return confirm('Are you sure you want to delete this education?')">Delete</a>
-                    <a class="btn btn-info"
-                        href="<?= URLROOT; ?>/educationsController/update/<?= $education->educationId ?>">Update</a>
-                </td>
-            </tr>
+                <tr>
+                    <td><a href="<?= URLROOT; ?>SubjectsController/index/<?= $education->educationId ?>" style="text-decoration:none; color:black;"><?= $education->schoolId ?></td>
+                    <td><?= $education->educationId ?></td>
+                    <td><?= $education->educationName ?></td>
+                    <td><?= $education->educationDuration ?></td>
+                </tr>
             <?php } ?>
         </tbody>
     </table>
+
 </div>

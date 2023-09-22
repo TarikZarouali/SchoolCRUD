@@ -55,4 +55,5 @@
             <?php } ?>
         </tbody>
     </table>
+
 </div>
