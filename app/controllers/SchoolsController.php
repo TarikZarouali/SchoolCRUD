@@ -78,7 +78,7 @@ class SchoolsController extends Controller
             // Update the school using the retrieved POST data
             $this->schoolModel->updateSchool($post);
             // Redirect to the school index page after a delay
-            header("Refresh:$this->delay; url=" . URLROOT . 'schoolscontroller/index/1');
+            header("Refresh:$this->delay; url=" . URLROOT . 'educationsController/index/' . $schoolId);
         }
     }
 

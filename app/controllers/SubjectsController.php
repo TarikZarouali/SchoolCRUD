@@ -109,7 +109,7 @@ class SubjectsController extends Controller
     {
         // $id = explode('+', $teacherId);
         if ($this->subjectModel->deleteTeacher($teacherId)) {
-            header("Refresh:$this->delay; url=" . URLROOT . 'subjectsController/index/' . $teacherId);
+            header("Refresh:$this->delay; url=" . URLROOT . 'classesController/index/' . $teacherId);
         } else {
             echo "Er is iets fout gegaan"; // Corrected capitalization
         }
@@ -156,7 +156,7 @@ class SubjectsController extends Controller
 
             if ($updateTeacher["success"]) {
                 // Redirect to the subject index page after a delay
-                header("Refresh:$this->delay; url=" . URLROOT . 'subjectsController/index/' . $teacherId);
+                header("Refresh:$this->delay; url=" . URLROOT . 'classesController/index/' . $teacherId);
                 exit; // Stop execution to ensure the redirect takes place
             } else {
                 echo $updateTeacher["message"];

@@ -90,7 +90,7 @@ class ClassesController extends Controller
 
             if ($updateClass["success"]) {
                 // Redirect to the class details page after a delay
-                header("Refresh: $this->delay; url=" . URLROOT . 'classesController/index/' . $classId);
+                header("Refresh: $this->delay; url=" . URLROOT . 'studentsController/index/' . $classId);
                 exit; // Stop execution to ensure the redirect takes place
             } else {
                 // Handle the case where the update failed

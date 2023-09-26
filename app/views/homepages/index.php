@@ -16,7 +16,7 @@
     <h1>welkom medewerker</h1>
 
 
-    <a href="<?= URLROOT; ?>schoolscontroller/index/1">School</a>
+    <a class="btn btn-info" style="width:50rem; font-size:2rem;" href="<?= URLROOT; ?>schoolscontroller/index/1">School</a>
 
 
 
