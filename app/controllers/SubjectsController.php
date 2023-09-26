@@ -107,9 +107,9 @@ class SubjectsController extends Controller
 
     public function deleteTeacher($teacherId)
     {
-        $id = explode('+', $teacherId);
-        if ($this->subjectModel->deleteTeacher($id[0])) {
-            header("Refresh:$this->delay; url=" . URLROOT . 'subjectsController/index/' . $id[1]);
+        // $id = explode('+', $teacherId);
+        if ($this->subjectModel->deleteTeacher($teacherId)) {
+            header("Refresh:$this->delay; url=" . URLROOT . 'subjectsController/index/' . $teacherId);
         } else {
             echo "Er is iets fout gegaan"; // Corrected capitalization
         }
