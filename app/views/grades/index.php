@@ -20,12 +20,7 @@
         </table>
     </div>
 </div>
-<div class="float-right" style="margin-top: 20px; margin-bottom: 2rem;">
-    <a class="btn btn-info" href="<?= URLROOT; ?>studentsController/update/<?= $data['Student']->studentId ?>">update
-        student</a>
-    <a class="btn btn-danger" href="<?= URLROOT; ?>studentsController/delete/<?= $data['Student']->studentId ?>">
-        delete student</a>
-</div>
+
 
 <nav style="margin-top: 100px;">
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -59,7 +54,7 @@
                     <td><?= $grade->gradeStudentId ?></td>
                     <td><?= $grade->gradeName ?></td>
                     <td><?= $grade->gradeGrade ?></td>
-                    <td style="text-align: center;">
+                    <td style=" align-items: center;text-align: center;">
                         <div style="display: flex; justify-content: center;">
                             <a class="btn btn-danger"
                                 href="<?= URLROOT; ?>/gradesController/delete/<?= $grade->gradeId . '+' . $data['Student']->studentId ?>"

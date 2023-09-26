@@ -144,31 +144,29 @@ class SubjectsController extends Controller
         }
     }
 
-    public function updateTeacher($Ids)
+    public function updateTeacher($teacherId)
     {
-        $Ids = explode('+', $Ids);
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Filter and validate your POST data properly
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             // Update the education using the retrieved POST data
-            $updateTeacher = $this->subjectModel->updateTeacher($Ids[0], $post);
+            $updateTeacher = $this->subjectModel->updateTeacher($teacherId, $post);
 
             if ($updateTeacher["success"]) {
                 // Redirect to the subject index page after a delay
-                header("Refresh:$this->delay; url=" . URLROOT . 'subjectsController/index/' . $Ids[1]);
+                header("Refresh:$this->delay; url=" . URLROOT . 'subjectsController/index/' . $teacherId);
                 exit; // Stop execution to ensure the redirect takes place
             } else {
                 echo $updateTeacher["message"];
             }
         } else {
             // Retrieve the selected subject data
-            $selectedTeacher = $this->subjectModel->detailTeacher($Ids[0]);
+            $selectedTeacher = $this->subjectModel->detailTeacher($teacherId);
 
             $data = [
-                'Teacher' => $selectedTeacher,
-                'teacherId' => $Ids[0],
-                'educationId' => $Ids[1]
+                'Teacher' => $selectedTeacher
             ];
 
             // Load the update view with the selected subject data
