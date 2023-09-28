@@ -18,17 +18,19 @@ class StudentsController extends Controller
         $this->studentModel = $this->model('studentModel');
     }
 
-    public function index($classId)
+    public function index($ids)
     {
+        $ids = explode("+", $ids);
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
             //Class
-            $detailsClass = $this->classModel->detailsClass($classId);
-            $getStudentByClassId = $this->studentModel->getStudentByClassId($classId);
+            $detailsClass = $this->classModel->detailsClass($ids[0]);
+            $getStudentByClassId = $this->studentModel->getStudentByClassId($ids[0]);
 
             $data = [
                 'Class' => $detailsClass,
-                'Student' => $getStudentByClassId
+                'Student' => $getStudentByClassId,
+                'TeacherId' => $ids[1]
             ];
 
             $this->view('students/index', $data);

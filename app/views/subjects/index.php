@@ -137,12 +137,9 @@
                 <td>${subject.subjectId}</td>
                 <td>${subject.subjectName}</td>
                 <td style="align-items: center;">
-                    <a class="btn btn-danger"
-                        href="#" 
-                        onclick="deleteSubject(${subject.subjectId})">Delete</a>
-                    <a class="btn btn-info"
-                        href="#" 
-                        onclick="updateSubject(${subject.subjectId})">Update</a>
+                     <td style="align-items: center;">
+                    <a class="btn btn-danger" href="<?= URLROOT; ?>/subjectsController/delete/${subject.subjectId}" onclick="return confirm('Are you sure you want to delete this school?')">Delete</a>
+                    <a class="btn btn-info" href="<?= URLROOT; ?>/subjectsController/update/${subject.subjectId}">Update</a>
                 </td>
             </tr>
         `;

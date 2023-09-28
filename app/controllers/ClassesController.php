@@ -19,19 +19,19 @@ class ClassesController extends Controller
         $this->subjectModel = $this->model('subjectModel');
     }
 
-    public function index($ids)
+    public function index($Ids)
     {
-        $ids = explode("+", $ids);
+        $Ids = explode("+", $Ids);
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
             //Class
-            $detailsTeacher = $this->subjectModel->detailTeacher($ids['0']);
-            $getClassByTeacherId = $this->classModel->getClassByTeacherId($ids['0']);
+            $detailsTeacher = $this->subjectModel->detailTeacher($Ids[0]);
+            $getClassByTeacherId = $this->classModel->getClassByTeacherId($Ids[0]);
 
             $data = [
                 'Class' => $getClassByTeacherId,
                 'Teacher' => $detailsTeacher,
-                'EducationId' => $ids[1]
+                'EducationId' => $Ids[1]
             ];
 
             $this->view('classes/index', $data);
@@ -65,12 +65,12 @@ class ClassesController extends Controller
         }
     }
 
-    public function delete($ids)
+    public function delete($Ids)
     {
-        $ids = explode('+', $ids);
+        $Ids = explode('+', $Ids);
 
-        if ($this->classModel->deleteClass($ids[0])) {
-            header("Refresh:$this->delay; url=" . URLROOT . 'classesController/index/' . $ids[1]);
+        if ($this->classModel->deleteClass($Ids[0])) {
+            header("Refresh:$this->delay; url=" . URLROOT . 'classesController/index/' . $Ids[1]);
         } else {
             echo "Er is iets fout gegaan"; // Corrected capitalization
         }

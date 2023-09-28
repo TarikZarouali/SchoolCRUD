@@ -69,9 +69,10 @@ class SubjectsController extends Controller
 
     public function delete($subjectId)
     {
-        $id = explode('+', $subjectId);
-        if ($this->subjectModel->deleteSubject($id[0])) {
-            header("Refresh:$this->delay; url=" . URLROOT . 'subjectsController/index/' . $id[1]);
+
+        $educationId = $this->subjectModel->getEducationId($subjectId);
+        if ($this->subjectModel->deleteSubject($subjectId)) {
+            header("Refresh:$this->delay; url=" . URLROOT . 'subjectsController/index/' . $educationId->educationId);
         }
     }
 

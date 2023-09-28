@@ -80,7 +80,7 @@
             const classItem = classData[i];
             classTableHTML += `
             <tr>
-                <td><a href="<?= URLROOT; ?>studentsController/index/${classItem.classId}" style="text-decoration:none; color:black;">${classItem.classId}</a></td>
+                <td><a href="<?= URLROOT; ?>studentsController/index/${classItem.classId}+${teacherId}" style="text-decoration:none; color:black;">${classItem.classId}</a></td>
                 <td>${classItem.classTeacherId}</td>
                 <td>${classItem.className}</td>
                 <td style="align-items: center;">

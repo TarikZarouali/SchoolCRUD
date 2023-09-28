@@ -20,6 +20,7 @@ class EducationsController extends Controller
 
     public function index($schoolId)
     {
+
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $detailSchool = $this->schoolModel->getSchoolById($schoolId);
             $educationSchool = $this->educationModel->getEducationsBySchoolId($schoolId); // Make sure this is working
@@ -65,12 +66,12 @@ class EducationsController extends Controller
 
     public function delete($educationId)
     {
-        $Id = explode('+', $educationId);
 
+        $schoolId = $this->educationModel->getSchoolId($educationId);
 
-        if ($this->educationModel->deleteEducation($Id[0])) {
+        if ($this->educationModel->deleteEducation($educationId)) {
             // Redirect to the index page with the selected schoolId after successful deletion
-            header("Refresh:$this->delay; url=" . URLROOT . 'educationsController/index/' . $Id[1]);
+            header("Refresh:$this->delay; url=" . URLROOT . 'educationsController/index/' . $schoolId->schoolId);
         } else {
             echo "Er is iets fout gegaan"; // Corrected capitalization
         }
