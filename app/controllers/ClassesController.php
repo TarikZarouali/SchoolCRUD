@@ -12,6 +12,7 @@ class ClassesController extends Controller
 
 
 
+
     public function __construct()
     {
         $this->classModel = $this->model('classModel');

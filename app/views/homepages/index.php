@@ -18,21 +18,6 @@
 
     <a class="btn btn-info" style="width:50rem; font-size:2rem;" href="<?= URLROOT; ?>schoolscontroller/index/1">School</a>
 
-
-
-
-    <a href="wwww.jsaidnas"></a>
-
-    <style>
-        .bx {
-            font-size: 2rem;
-            cursor: pointer;
-        }
-    </style>
-
-
-
-
     <?php require APPROOT . '/views/includes/footer.php'; ?>
 
 
