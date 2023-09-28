@@ -19,7 +19,7 @@
 
     <div class="float-right" style="margin-bottom: 2rem;">
         <a class="btn btn-success" href="<?= URLROOT; ?>/classesController/create/<?= $data['Teacher']->teacherId ?>">Create new Class</a>
-        <a class="btn btn-danger" href="<?= URLROOT; ?>/subjectsController/deleteTeacher/<?= $data['Teacher']->teacherId . (isset($data['educationId']) ? '+' . $data['educationId'] : ''); ?>" onclick="return confirm('Are you sure you want to delete this teacher?')">Delete teacher</a>
+        <a class="btn btn-danger" href="<?= URLROOT; ?>/subjectsController/deleteTeacher/<?= $data['Teacher']->teacherId . "+" . $data['EducationId']; ?>" onclick="return confirm('Are you sure you want to delete this teacher?')">Delete teacher</a>
         <a class="btn btn-info" href="<?= URLROOT; ?>/subjectsController/updateTeacher/<?= $data['Teacher']->teacherId ?>">Edit Teacher</a>
     </div>
 
