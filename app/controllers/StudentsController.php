@@ -29,8 +29,7 @@ class StudentsController extends Controller
 
             $data = [
                 'Class' => $detailsClass,
-                'Student' => $getStudentByClassId,
-                'TeacherId' => $ids[1]
+                'Student' => $getStudentByClassId
             ];
 
             $this->view('students/index', $data);
